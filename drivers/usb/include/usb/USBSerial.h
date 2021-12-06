@@ -108,6 +108,7 @@ public:
     */
     virtual int _getc();
 
+#if !MBED_CONF_PLATFORM_STDIO_MINIMAL_CONSOLE_ONLY
     /**
      * Block until the terminal is connected
      */
@@ -115,6 +116,7 @@ public:
     	USBCDC::wait_ready();
     	_file->_flags &= ~__SEOF;
     }
+#endif
 
     /**
     * Check the number of bytes available.
