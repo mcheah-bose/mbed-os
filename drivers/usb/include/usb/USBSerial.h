@@ -109,6 +109,14 @@ public:
     virtual int _getc();
 
     /**
+     * Block until the terminal is connected
+     */
+    void wait_ready() {
+    	USBCDC::wait_ready();
+    	_file->_flags &= ~__SEOF;
+    }
+
+    /**
     * Check the number of bytes available.
     *
     * @returns the number of bytes available

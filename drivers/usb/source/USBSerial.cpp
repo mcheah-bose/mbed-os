@@ -56,7 +56,7 @@ int USBSerial::_putc(int c)
 int USBSerial::_getc()
 {
     uint8_t c = 0;
-    if (receive(&c, sizeof(c))) {
+    if (_terminal_connected && receive(&c, sizeof(c))) {
         return c;
     } else {
         return -1;
